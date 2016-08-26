@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model List<Blog.Models.Post>
+
+<section class="row">
+    @foreach (var post in Model)
+    {
+        <article class="col-md-6">
+            <h2 class="title">@post.Title</h2>
+            <div class="about">
+                Posted 
+                @if (post.Author != null)
+                {
+                    @:by
+                <i>@post.Author.FullName (@post.Author.UserName)</i>
+                }
+                at <i>@post.Date</i>
+            </div>
+            <div class="body">
+                @Html.Raw(post.Body)
+            </div>
+        </article>
+    }
+</section>
