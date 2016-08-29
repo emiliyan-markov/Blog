@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Models;
+using Blog.Extensions;
 
 namespace Blog.Controllers
 {
@@ -56,6 +57,7 @@ namespace Blog.Controllers
                 post.Author = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                 db.Posts.Add(post);
                 db.SaveChanges();
+                this.AddNotification("Post has been created", NotificationType.INFO);
                 return RedirectToAction("Index");
             }
 
@@ -68,12 +70,14 @@ namespace Blog.Controllers
         {
             if (id == null)
             {
+                this.AddNotification("Post cannot be found.", NotificationType.ERROR);
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Post post = db.Posts.Find(id);
             if (post == null)
             {
-                return HttpNotFound();
+                this.AddNotification("Post cannot be found.", NotificationType.ERROR);
+                return RedirectToAction("Index");
             }
             return View(post);
         }
@@ -90,6 +94,7 @@ namespace Blog.Controllers
             {
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
+                this.AddNotification("Post has been edited.", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
             return View(post);
@@ -101,12 +106,14 @@ namespace Blog.Controllers
         {
             if (id == null)
             {
+                this.AddNotification("Post cannot be found.", NotificationType.ERROR);
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Post post = db.Posts.Find(id);
             if (post == null)
             {
-                return HttpNotFound();
+                this.AddNotification("Post cannot be found.", NotificationType.ERROR);
+                return RedirectToAction("Index");
             }
             return View(post);
         }
@@ -120,6 +127,7 @@ namespace Blog.Controllers
             Post post = db.Posts.Find(id);
             db.Posts.Remove(post);
             db.SaveChanges();
+            this.AddNotification("Post has been deleted.", NotificationType.SUCCESS);
             return RedirectToAction("Index");
         }
 
