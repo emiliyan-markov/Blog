@@ -4,15 +4,15 @@
 
 @model List<Blog.Models.Post>
 
-<section class="row">
+        <section class="row">
     @foreach (var post in Model)
-    {
-        <article class="col-md-6">
+{
+        <article class="col-md-12">
             <h2 class="title">@post.Title</h2>
             <div class="about">
-                Posted 
+                Posted
                 @if (post.Author != null)
-                {
+{
                     @:by
                 <i>@post.Author.FullName (@post.Author.UserName)</i>
                 }
@@ -22,5 +22,5 @@
                 @Html.Raw(post.Body)
             </div>
         </article>
-    }
+        }
 </section>

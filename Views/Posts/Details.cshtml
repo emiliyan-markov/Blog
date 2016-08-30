@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.Title)
         </dt>
 
-        <dd>
+        <dd style="margin-bottom: 10px;">
             @Html.DisplayFor(model => model.Title)
         </dd>
 
@@ -23,14 +23,14 @@
         </dt>
 
         <dd>
-            <textarea disabled="disabled" class="form-control text-box multi-line">@Model.Body</textarea>
+            <textarea disabled="disabled" id="details" class="form-control text-box multi-line" rows="10">@Model.Body</textarea>
         </dd>
 
-        <dt>
+        <dt style="margin-top: 10px;">
             @Html.DisplayNameFor(model => model.Date)
         </dt>
 
-        <dd>
+        <dd style="margin-top: 10px;">
             @Html.DisplayFor(model => model.Date)
         </dd>
 
