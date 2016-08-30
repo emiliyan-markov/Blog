@@ -293,7 +293,7 @@ table {
   }
   .table-bordered th,
   .table-bordered td {
-    border: 1px solid #ddd !important;
+
   }
 }
 
@@ -320,6 +320,11 @@ body {
 
 article {
     padding-bottom: 10px;
+    background-color: #fafbff;
+    border: solid;
+    border-color: #191e39;
+    margin: 10px;
+    border-radius: 25px;
 }
 
 input,
@@ -1418,6 +1423,8 @@ th {
 }
 
 .table {
+  border-collapse: collapse;
+  border:none !important;
   width: 100%;
   margin-bottom: 20px;
 }
@@ -1431,7 +1438,6 @@ th {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
 }
 
 .table thead > tr > th {

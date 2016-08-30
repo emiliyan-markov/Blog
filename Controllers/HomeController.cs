@@ -12,7 +12,7 @@ namespace Blog.Controllers
         public ActionResult Index()
         {
             var db = new ApplicationDbContext();
-            var post = db.Posts.OrderByDescending(p => p.Date).Take(3);
+            var post = db.Posts.OrderByDescending(p => p.Date);
             return View(post.ToList());
         }
     }
