@@ -18,15 +18,31 @@ namespace Blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter,string searchString, int? page)
         {
-            
+            ViewBag.CurrentSort = sortOrder;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var posts = from p in db.Posts select p;
             if (!string.IsNullOrEmpty(searchString))
             {
                 posts = posts.Where(p => p.Title.Contains(searchString) || p.Body.Contains(searchString));
             }
-            return View(posts);
+            posts = posts.OrderByDescending(p => p.Date);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(posts.ToPagedList(pageNumber, pageSize));
+
         }
 
         // GET: Posts/Details/5
