@@ -67,3 +67,7 @@ E:\Проекти\C# Projects\Blog\Blog\bin\Microsoft.Owin.Security.MicrosoftAcc
 E:\Проекти\C# Projects\Blog\Blog\obj\Debug\Blog.dll
 E:\Проекти\C# Projects\Blog\Blog\obj\Debug\Blog.pdb
 E:\Проекти\C# Projects\Blog\Blog\obj\Debug\Blog.csprojResolveAssemblyReference.cache
+E:\Проекти\C# Projects\Blog\Blog\bin\PagedList.dll
+E:\Проекти\C# Projects\Blog\Blog\bin\PagedList.Mvc.dll
+E:\Проекти\C# Projects\Blog\Blog\bin\PagedList.xml
+E:\Проекти\C# Projects\Blog\Blog\bin\PagedList.Mvc.xml

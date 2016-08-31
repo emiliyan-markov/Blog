@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Blog.Models;
 using Blog.Extensions;
+using PagedList;
 
 namespace Blog.Controllers
 {
@@ -17,9 +18,15 @@ namespace Blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Posts.Include(p => p.Author).ToList());
+            
+            var posts = from p in db.Posts select p;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                posts = posts.Where(p => p.Title.Contains(searchString) || p.Body.Contains(searchString));
+            }
+            return View(posts);
         }
 
         // GET: Posts/Details/5

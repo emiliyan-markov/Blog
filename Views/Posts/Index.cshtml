@@ -10,6 +10,13 @@
 }
 
 <h2>All Posts</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Search by keyword: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 <article>
     <table class="table">
         <tr>
