@@ -1,9 +1,8 @@
 ﻿@using Blog.Classes;
 @using Blog.Models;
 @using PagedList.Mvc;
+
 @model PagedList.IPagedList<Blog.Models.Post>
-
-
 
 
 @{
@@ -78,8 +77,9 @@
 
 </table>
 </article>
-<br />
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -33,7 +33,7 @@ namespace Blog.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var posts = from p in db.Posts select p;
+            var posts = from p in db.Posts.Include(p => p.Author) select p;
             if (!string.IsNullOrEmpty(searchString))
             {
                 posts = posts.Where(p => p.Title.Contains(searchString) || p.Body.Contains(searchString));
